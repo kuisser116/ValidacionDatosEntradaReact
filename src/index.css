@@ -33,3 +33,9 @@ button {
 button:hover {
   background-color: #444;
 }
+
+.error-text {
+  color: #ff4d4f;
+  font-size: 0.9em;
+  margin-top: 4px;
+}

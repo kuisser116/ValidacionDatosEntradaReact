@@ -77,7 +77,7 @@ export const Login = ({ onLoginSuccess }) => {
                         value={formData.email}
                         onChange={handleChange}
                     />
-                    {errors.email && <p>{`> Error: ${errors.email}`}</p>}
+                    {errors.email && <p className="error-text">{errors.email}</p>}
                 </div>
                 <br />
                 <div>
@@ -88,7 +88,7 @@ export const Login = ({ onLoginSuccess }) => {
                         value={formData.password}
                         onChange={handleChange}
                     />
-                    {errors.password && <p>{`> Error: ${errors.password}`}</p>}
+                    {errors.password && <p className="error-text">{errors.password}</p>}
                 </div>
                 <br />
                 <button type="submit">Ingresar</button>

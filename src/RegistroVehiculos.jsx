@@ -76,7 +76,7 @@ export const RegistroVehiculos = () => {
         e.preventDefault();
 
         if (validateForm()) {
-            setSuccessMessage("¡Vehículo registrado con integridad asegurada!");
+            setSuccessMessage("¡Vehículo registrado!");
             setFormData({ propietario: '', placa: '', anio: '' });
             setErrors({});
             setTimeout(() => setSuccessMessage(''), 3000);
@@ -99,7 +99,7 @@ export const RegistroVehiculos = () => {
                         value={formData.propietario}
                         onChange={handleChange}
                     />
-                    {errors.propietario && <p>{`> Error: ${errors.propietario}`}</p>}
+                    {errors.propietario && <p className="error-text">{errors.propietario}</p>}
                 </div>
                 <br />
                 <div>
@@ -111,7 +111,7 @@ export const RegistroVehiculos = () => {
                         onChange={handleChange}
                         maxLength={8}
                     />
-                    {errors.placa && <p>{`> Error: ${errors.placa}`}</p>}
+                    {errors.placa && <p className="error-text">{errors.placa}</p>}
                 </div>
                 <br />
                 <div>
@@ -122,7 +122,7 @@ export const RegistroVehiculos = () => {
                         value={formData.anio}
                         onChange={handleChange}
                     />
-                    {errors.anio && <p>{`> Error: ${errors.anio}`}</p>}
+                    {errors.anio && <p className="error-text">{errors.anio}</p>}
                 </div>
                 <br />
                 <button type="submit">Guardar Vehículo</button>
