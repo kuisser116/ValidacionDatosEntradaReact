@@ -1,19 +1,15 @@
 # Validación de Datos de Entrada en React
 
+**Equipo DevCore Nexus**
+
 Este proyecto es una práctica académica donde implementamos una **Seguridad y Validación Estricta de Datos de Entrada** utilizando exclusivamente **React Puro**. No usamos librerías externas para los formularios, todo está hecho a mano para entender cómo proteger nuestra información.
 
-## Buena Práctica Implementada
-**Validación estricta de datos de entrada y sanitización en formularios mediante componentes controlados en React.**
+## Buena práctica implementada
+Validación estricta de datos de entrada en frontend
 
-## Librerías Utilizadas
-- **React (v19)**: Para construir la interfaz de usuario de manera declarativa.
-- **Vite**: Para la configuración y empaquetado inicial rápido del proyecto frontend.
-*(Nota: No se utilizaron dependencias externas específicas para formularios o validación como React Hook Form, Formik, Zod o Yup. Toda la seguridad está implementada en código nativo de React y JavaScript).*
+## Librerías utilizadas
+react, react-dom, vite, @vitejs/plugin-react, eslint, globals (Toda la validación se realizó mediante código nativo de React y Regex sin dependencias externas).
 
-## Enlace de Repositorio Público
-[Tu enlace aquí]
-
----
 
 ## 🛡️ ¿Qué hace cada cosa y cómo funciona?
 
