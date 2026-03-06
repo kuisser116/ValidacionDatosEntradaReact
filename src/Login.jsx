@@ -1,32 +1,13 @@
 import React, { useState } from 'react';
 
 export const Login = ({ onLoginSuccess }) => {
-    /*
-      === BLOQUE 1: GUARDAR DATOS SEGUROS EN REACT ===
-      React guarda lo que el usuario escribe de forma segura.
-      No usamos el HTML directo (DOM) porque alguien podría
-      inyectar código malicioso ahí.
-    */
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
 
-    /*
-      === BLOQUE 2: ERRORES AISLADOS ===
-      Los errores se guardan en su propio espacio.
-      Validamos antes de guardar y sin afectar lo que sigues 
-      escribiendo. ¡Todo en tiempo real y seguro!
-    */
     const [errors, setErrors] = useState({});
 
-    /*
-      === BLOQUE 3: COMPROBACIONES ESTRICTAS Y EN TIEMPO REAL ===
-      Aquí revisamos que la información sea correcta al instante:
-      - Que los campos no estén vacíos.
-      - Que el correo tenga forma real de correo (usando Regex).
-      - Que la contraseña tenga buena longitud, mayúsculas y números.
-    */
     const validateField = (name, value) => {
         let errorMessage = null;
 
@@ -66,12 +47,6 @@ export const Login = ({ onLoginSuccess }) => {
         return isEmailValid && isPasswordValid;
     };
 
-    /*
-      === BLOQUE 4: CAPTURAR DATOS AL INSTANTE ===
-      Cada vez que el usuario teclea, guardamos el dato al momento.
-      También validamos tecla por tecla, por lo que el mensaje de 
-      error se mostrará o borrará automáticamente.
-    */
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -82,19 +57,10 @@ export const Login = ({ onLoginSuccess }) => {
         validateField(name, value);
     };
 
-    /*
-      === BLOQUE 5: FRENAR EL ENVÍO INSEGURO ===
-      preventDefault() evita que la página parpadee y mande 
-      los datos a ciegas. Obligamos a que pasen primero 
-      por nuestra validación estricta (Bloque 3).
-    */
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            console.log('Credenciales válidas:', formData);
             onLoginSuccess();
-        } else {
-            console.log('Errores de validación en el Login');
         }
     };
 
@@ -102,11 +68,6 @@ export const Login = ({ onLoginSuccess }) => {
         <div>
             <h2>Iniciar Sesión</h2>
 
-            {/* 
-        === BLOQUE 6: DESACTIVAR VALIDAR EN HTML ===
-        'noValidate' apaga las validaciones fáciles del navegador
-        porque queremos que nuestra seguridad de React tenga el control total.
-      */}
             <form onSubmit={handleSubmit} noValidate>
                 <div>
                     <label>Correo Electrónico:</label><br />

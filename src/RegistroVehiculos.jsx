@@ -1,34 +1,15 @@
 import React, { useState } from 'react';
 
 export const RegistroVehiculos = () => {
-    /*
-      === BLOQUE 1: CENTRALIZAR DATOS ===
-      React guarda todo lo que escribes de inmediato en "formData".
-      Así evitamos usar valores del HTML directo, porque los 
-      atacantes podrían intentar cambiarlos con código oculto.
-    */
     const [formData, setFormData] = useState({
         propietario: '',
         placa: '',
         anio: ''
     });
 
-    /*
-      === BLOQUE 2: ERRORES AISLADOS ===
-      Los errores se guardan en su propio espacio.
-      Validamos antes de guardar y sin afectar lo que sigues 
-      escribiendo. ¡Todo en tiempo real y seguro!
-    */
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
 
-    /*
-      === BLOQUE 3: VALIDACIÓN Y LIMPIEZA EN TIEMPO REAL ===
-      Aquí comprobamos tecla por tecla que los datos sean legítimos:
-      - trim() quita espacios falsos (ej: "  a  ").
-      - Usamos Regex para exigir un formato exacto de placa.
-      - Bloqueamos letras en el campo de Año (solo números reales).
-    */
     const validateField = (name, value) => {
         let errorMessage = null;
         const currentYear = new Date().getFullYear();
@@ -78,12 +59,6 @@ export const RegistroVehiculos = () => {
         return isPropietarioValid && isPlacaValid && isAnioValid;
     };
 
-    /*
-      === BLOQUE 4: CAPTURAR Y FORZAR REGLAS ===
-      Atrapamos la letra y la validamos al instante. 
-      Además, si es el campo 'placa', la forzamos a MAYÚSCULAS 
-      de forma automática para evitar que envíen minúsculas.
-    */
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -97,23 +72,15 @@ export const RegistroVehiculos = () => {
         validateField(name, newValue);
     };
 
-    /*
-      === BLOQUE 5: FRENAR EL BOTÓN ENVIAR ===
-      preventDefault() evita que la página se actualice al enviar.
-      Luego manda todo el texto al Bloque 3 para una revisión final 
-      y estricta. ¡Si pasa, se guarda; si no, se frena de inmediato!
-    */
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (validateForm()) {
-            console.log("Datos validados de formar segura:", formData);
             setSuccessMessage("¡Vehículo registrado con integridad asegurada!");
             setFormData({ propietario: '', placa: '', anio: '' });
             setErrors({});
             setTimeout(() => setSuccessMessage(''), 3000);
         } else {
-            console.log("Intento de envío bloqueado, hay errores sintácticos");
             setSuccessMessage('');
         }
     };
@@ -122,11 +89,6 @@ export const RegistroVehiculos = () => {
         <div>
             <h2>REGISTRO DE VEHÍCULOS</h2>
 
-            {/* 
-        === BLOQUE 6: APAGAR EL NAVEGADOR ===
-        El "noValidate" le dice al navegador (Chrome, Edge) que 
-        no se meta. React y nuestra seguridad ahora mandan.
-      */}
             <form onSubmit={handleSubmit} noValidate>
 
                 <div>
